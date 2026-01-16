@@ -1,7 +1,7 @@
 let Navbar = () => {
   return (
     <div className="flex justify-between item-center text-white p-4 bg-[#101a37] shadow-[9px_9px_6px_rgba(0,0,0,0.2)]">
-      <h1 className="text-4xl font-bold drop-shadow-[0_0_6px_rgb(184,152,42)]">
+      <h1 className="text-4xl text-[#b8982a] font-bold drop-shadow-[5px_8px_2px_rgb(0,0,0)]">
         Expense Tracker
       </h1>
       <ul className="flex item-center p-2 text-lg font-bold">
