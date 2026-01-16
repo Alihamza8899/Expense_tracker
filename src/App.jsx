@@ -8,7 +8,7 @@ function App() {
       <div className="flex justify-center px-2 py-16 bg-[#dcdcdc] min-h-[35rem]">
         <Expensebox />
       </div>
-    <div className="h-[20rem] w-full bg-[#101a37] shadow shadow-[#101a37]">
+    <div className="h-[26.5rem] w-full bg-[#101a37] shadow shadow-[#101a37]">
       <AboutApp/>
     </div>
     </main>
