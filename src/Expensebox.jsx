@@ -3,7 +3,7 @@ let Expensebox = () => {
     <div className="w-[40%] border border-white rounded-lg min-h-[250px] bg-white p-4">
       <form>
         <h2 className="text-xl font-bold">Expense Tracker</h2>
-        <div className="my-4">
+        <div className="my-4 flex">
           <input
             type="text"
             name="expense_name"
