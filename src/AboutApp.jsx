@@ -2,7 +2,7 @@ let AboutApp = () => {
   return (
     <div className="text-white">
       <h1 className="text-4xl font-bold px-8 py-4"> About App </h1>
-      <div className="w-[60%] mx-auto py-8 text-lg font-semibold">
+      <div className=" w-full md:w-[60%] mx-auto py-8 px-4 text-lg font-semibold">
         This Expense Tracker app is designed to make managing your money simple,
         clear, and stress-free. Whether you’re tracking daily spending, planning
         a budget, or just trying to understand where your money goes, this app
