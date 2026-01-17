@@ -1,0 +1,21 @@
+@media (max-width: 760px) {
+  .navbar {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+   
+    top: -200px;
+    right: 0px;
+    transition: top 0.4s ease;
+  }
+  .show {
+    top: 0px;
+    right:0px;
+  }
+  
+}
+
+.btn:hover {
+  background-color: #0e1d4b;
+  transform: scale(0.6);
+}

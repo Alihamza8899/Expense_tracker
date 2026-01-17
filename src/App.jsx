@@ -6,7 +6,7 @@ import CreatedBy from "./CreatedBy.jsx";
 
 function App() {
   return (
-    <main className=" bg-white max-w-full min-h-screen backdrop-blur-md">
+    <main className=" bg-white w-full min-h-full backdrop-blur-md">
       <Navbar />
       <div className="flex justify-center px-2 py-16 bg-[#dcdcdc] min-h-[35rem]">
         <Expensebox />

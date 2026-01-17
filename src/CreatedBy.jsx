@@ -2,15 +2,15 @@ import image from "./assets/Ali.jpg";
 
 let CreatedBy = () => {
   return (
-    <div className="flex justify-evenly items-center">
-      <div className="w-[25%] h-[18rem] rounded-full my-6">
+    <div className="flex flex-col md:justify-evenly items-center">
+      <div className="w-[70%] md:w-[25%] h-[18rem] rounded-full my-6">
         <img
           src={image}
           alt="createdby-pic"
           className="w-full h-full object-cover rounded-full "
         />
       </div>
-      <div className="text-xl text-white leading-10">
+      <div className="text-xl text-white leading-10 p-4">
         <h1>
           Name : <strong> Ali Hamza </strong>
         </h1>
