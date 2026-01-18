@@ -1,9 +1,19 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ExpenseDetail from "./ExpenseDetail";
 
 let Expensebox = () => {
-  let [expense, setExpense] = useState({});
+  let [expense, setExpense] = useState(() => {
+    let saveData = localStorage.getItem("expense");
+    if (saveData) {
+      return localStorage.getItem("expense");
+    } else {
+    }
+  });
   let [expenseList, setExpenseList] = useState([]);
+
+  useEffect(() => {
+    localStorage.setItem("expense", JSON.stringify(expenseList));
+  }, [expenseList]);
   let changeHandle = (e) => {
     let { value, name } = e.target;
 
@@ -11,14 +21,14 @@ let Expensebox = () => {
   };
   let handleSubmit = (e) => {
     e.preventDefault();
-    if(expense.expense_name || expense.expense.amount){
+    if (expense.expense_name != "") {
       setExpenseList([...expenseList, expense]);
-    setExpense({
-      expense_name: "",
-      expense_amount: 0,
-    });
-    }else{
-      alert("Enter data first!")
+      setExpense({
+        expense_name: "",
+        expense_amount: 0,
+      });
+    } else {
+      alert("Enter data first!");
     }
   };
   let deleteItem = (index) => {
@@ -30,8 +40,8 @@ let Expensebox = () => {
   return (
     <div
       id="home"
-     className="min-w-[40%] border border-white rounded-lg min-h-[200px] bg-white p-4 shadow-[8px_8px_9px_rgba(0,0,0,0.1)]">
-    
+      className="min-w-[40%] border border-white rounded-lg min-h-[200px] bg-white p-4 shadow-[8px_8px_9px_rgba(0,0,0,0.1)]"
+    >
       <form onSubmit={handleSubmit}>
         <h2 className="text-xl font-bold">Expense Tracker</h2>
         <div className="my-4 flex flex-col md:flex-row ">
@@ -61,19 +71,18 @@ let Expensebox = () => {
       </form>
       <div className="my-4">
         <hr className="border border-gray-300" />
-        {
-          expenseList.map((expense, i) => {
-            return (
-              expenseList.length  && <ExpenseDetail
-                data={expense}
-                key={i}
-                index={i}
-                deleteItem={deleteItem}
-              /> 
-            );
-          })
-        
-        }
+        {expenseList.map((expense, i) => {
+          return expenseList ? (
+            <ExpenseDetail
+              data={expense}
+              key={i}
+              index={i}
+              deleteItem={deleteItem}
+            />
+          ) : (
+            <h1>Not Expense Yet</h1>
+          );
+        })}
       </div>
     </div>
   );
