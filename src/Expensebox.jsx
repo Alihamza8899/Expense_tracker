@@ -2,21 +2,19 @@ import { useState, useEffect } from "react";
 import ExpenseDetail from "./ExpenseDetail";
 
 let Expensebox = () => {
-  let [expense, setExpense] = useState(() => {
-    let saveData = localStorage.getItem("expense");
-    if (saveData) {
-      return localStorage.getItem("expense");
-    } else {
-    }
+  let [expense, setExpense] = useState({});
+  let [totalExpense, setTotalExpense] = useState(0);
+  let [expenseList, setExpenseList] = useState(() => {
+    const saveData = localStorage.getItem("expense");
+
+    return saveData ? JSON.parse(saveData) : [];
   });
-  let [expenseList, setExpenseList] = useState([]);
 
   useEffect(() => {
     localStorage.setItem("expense", JSON.stringify(expenseList));
   }, [expenseList]);
   let changeHandle = (e) => {
     let { value, name } = e.target;
-
     setExpense({ ...expense, [name]: value });
   };
   let handleSubmit = (e) => {
@@ -27,6 +25,7 @@ let Expensebox = () => {
         expense_name: "",
         expense_amount: 0,
       });
+      setTotalExpense(totalExpense + Number(expense.expense_amount));
     } else {
       alert("Enter data first!");
     }
@@ -71,6 +70,9 @@ let Expensebox = () => {
       </form>
       <div className="my-4">
         <hr className="border border-gray-300" />
+        <h1 className="text-xl font-bold p-2">
+          Total Expense : {totalExpense}pkr
+        </h1>
         {expenseList.map((expense, i) => {
           return expenseList ? (
             <ExpenseDetail
