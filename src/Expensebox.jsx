@@ -11,15 +11,27 @@ let Expensebox = () => {
   };
   let handleSubmit = (e) => {
     e.preventDefault();
-    setExpenseList([...expenseList, expense]);
+    if(expense.expense_name || expense.expense.amount){
+      setExpenseList([...expenseList, expense]);
     setExpense({
       expense_name: "",
       expense_amount: 0,
     });
+    }else{
+      alert("Enter data first!")
+    }
+  };
+  let deleteItem = (index) => {
+    console.log(index);
+    let updateData = expenseList.filter((val, i) => i != index);
+    setExpenseList(updateData);
   };
 
   return (
-    <div className="min-w-[40%] border border-white rounded-lg min-h-[200px] bg-white p-4 shadow-[8px_8px_9px_rgba(0,0,0,0.1)]">
+    <div
+      id="home"
+     className="min-w-[40%] border border-white rounded-lg min-h-[200px] bg-white p-4 shadow-[8px_8px_9px_rgba(0,0,0,0.1)]">
+    
       <form onSubmit={handleSubmit}>
         <h2 className="text-xl font-bold">Expense Tracker</h2>
         <div className="my-4 flex flex-col md:flex-row ">
@@ -49,9 +61,19 @@ let Expensebox = () => {
       </form>
       <div className="my-4">
         <hr className="border border-gray-300" />
-        {expenseList.map((expense, i) => {
-          return <ExpenseDetail data={expense} key={i} />;
-        })}
+        {
+          expenseList.map((expense, i) => {
+            return (
+              expenseList.length  && <ExpenseDetail
+                data={expense}
+                key={i}
+                index={i}
+                deleteItem={deleteItem}
+              /> 
+            );
+          })
+        
+        }
       </div>
     </div>
   );

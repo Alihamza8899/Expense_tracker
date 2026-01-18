@@ -1,12 +1,13 @@
 import { useState } from "react";
 import style from "./style/navbar.module.css";
+import { HashLink } from "react-router-hash-link";
 
 let Navbar = () => {
   let [navBtn, setNavBtn] = useState(false);
   return (
     <>
-      <div className="flex justify-between items-center text-white p-4 bg-[#101a37] shadow-[9px_9px_6px_rgba(0,0,0,0.2)] min-h-[7rem] md:min-h-[4rem]">
-        <h1 className="text-4xl w-[45%] break-words text-[#b8982a] font-bold drop-shadow-[5px_8px_2px_rgb(0,0,0)]">
+      <div className="flex justify-between items-center sticky top-0 z-50 text-white  bg-[#101a37] shadow-[9px_9px_6px_rgba(0,0,0,0.2)] min-h-[7rem] md:min-h-[4rem]">
+        <h1 className="text-4xl w-[45%] p-2 break-words text-[#b8982a] font-bold drop-shadow-[5px_8px_2px_rgb(0,0,0)]">
           Expense Tracker
         </h1>
         <div>
@@ -20,12 +21,22 @@ let Navbar = () => {
         <ul
           className={`${style.navbar} ${
             navBtn && style.show
-          } flex p-2 text-lg font-bold leading-8`}
+          } flex text-lg font-bold top-[7rem] md:top-0 md:translate-x-0 leading-8 transform transition-transform duration-700 ease-in-out
+          ${navBtn ? "translate-x-0" : "translate-x-full"}
+          `}
         >
-          <li className="px-2 hover:bg-[#b8982a] ">Home</li>
-          <li className="px-2">About App</li>
-          <li className="px-2">App features</li>
-          <li className="px-2">Created By</li>
+          <HashLink smooth className="md:px-4 md:py-6 hover:bg-[#b8982a] p-2" to="#home">
+            Home
+          </HashLink>
+          <HashLink smooth className="md:px-4 md:py-6 hover:bg-[#b8982a] p-2" to="#about">
+            About App
+          </HashLink>
+          <HashLink smooth className="md:px-4 md:py-6 hover:bg-[#b8982a] p-2" to="#appfeatures">
+            App features
+          </HashLink>
+          <HashLink smooth className="md:px-4 md:py-6 hover:bg-[#b8982a] p-2" to="#createdby">
+            Created By
+          </HashLink>
         </ul>
       </div>
     </>

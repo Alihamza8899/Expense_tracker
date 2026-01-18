@@ -3,7 +3,7 @@
 }
 @media (max-width: 760px) {
   .navbar {
-    display: flex;
+    display: none;
     flex-direction: column;
     position: fixed;
     transform: translate(-50rem, 7rem);

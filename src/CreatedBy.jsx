@@ -2,7 +2,9 @@ import image from "./assets/Ali.jpg";
 
 let CreatedBy = () => {
   return (
-    <div className="flex flex-col md:justify-evenly items-center">
+    <>
+    <h1 className="text-4xl text-white font-bold px-16 py-4 ">Created By</h1>
+    <div id="createdby" className="flex flex-col md:justify-evenly items-center">
       <div className="w-[70%] md:w-[25%] h-[18rem] rounded-full my-6">
         <img
           src={image}
@@ -25,6 +27,7 @@ let CreatedBy = () => {
         </h1>
       </div>
     </div>
+    </>
   );
 };
 export default CreatedBy;
