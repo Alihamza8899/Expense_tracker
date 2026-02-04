@@ -31,7 +31,8 @@ let Expensebox = () => {
     }
   };
   let deleteItem = (index) => {
-    console.log(index);
+    let amount = expenseList[index].expense_amount;
+    setTotalExpense(total)
     let updateData = expenseList.filter((val, i) => i != index);
     setExpenseList(updateData);
   };
